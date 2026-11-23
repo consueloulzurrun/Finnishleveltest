@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#003580" />
+    <title>Finnish Level — Discover Your Finnish</title>
+    <meta name="description" content="A warm, modern CEFR-inspired Finnish proficiency assessment." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <button class="brand" id="brandButton" aria-label="Go to home">
+        <span class="brand-mark" aria-hidden="true">FI</span>
+        <span>Finnish Level</span>
+      </button>
+      <nav class="header-actions" aria-label="Main navigation">
+        <button class="text-button" id="homeButton">About</button>
+        <button class="icon-button" id="languageButton" aria-label="Finnish language is available">FI</button>
+      </nav>
+    </header>
+
+    <main id="app" tabindex="-1">
+      <section class="view home-view active" id="homeView" aria-labelledby="homeTitle">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Finnish proficiency assessment</p>
+            <h1 id="homeTitle">Discover Your<br /><span>Finnish Level!</span></h1>
+            <p class="finnish-subtitle">Testaa suomen kielen taitosi</p>
+            <p class="hero-description">
+              A friendly, 36-question snapshot of your Finnish from everyday basics to advanced expression.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-button" id="startButton">
+                Start Finnish Test
+                <span aria-hidden="true">→</span>
+              </button>
+              <p class="duration"><span aria-hidden="true">◷</span> 15–20 minutes</p>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Illustration of Finnish language levels">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="level-card level-a1">
+              <span>A1</span><strong>Alkeistaso</strong>
+            </div>
+            <div class="level-card level-a2">
+              <span>A2</span><strong>Perustaso 2</strong>
+            </div>
+            <div class="level-card level-b1">
+              <span>B1</span><strong>Keskitaso 1</strong>
+            </div>
+            <div class="level-card level-b2">
+              <span>B2</span><strong>Keskitaso 2</strong>
+            </div>
+            <div class="level-card level-c1">
+              <span>C1</span><strong>Ylin taso 1</strong>
+            </div>
+            <div class="level-card level-c2">
+              <span>C2</span><strong>Ylin taso 2</strong>
+            </div>
+            <div class="art-word" aria-hidden="true">SUOMI</div>
+          </div>
+        </div>
+
+        <div class="promise-strip">
+          <div>
+            <span class="promise-icon">◎</span>
+            <p><strong>CEFR estimate</strong><small>A1–C2 level insight</small></p>
+          </div>
+          <div>
+            <span class="promise-icon">⌁</span>
+            <p><strong>Skill breakdown</strong><small>Four key areas</small></p>
+          </div>
+          <div>
+            <span class="promise-icon">✦</span>
+            <p><strong>Personal roadmap</strong><small>Study tips made for you</small></p>
+          </div>
+          <div>
+            <span class="promise-icon">Aa</span>
+            <p><strong>Answer explanations</strong><small>Learn from every response</small></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view quiz-view" id="quizView" aria-labelledby="questionText">
+        <div class="quiz-shell">
+          <aside class="quiz-sidebar" aria-label="Assessment progress">
+            <p class="sidebar-label">Finnish assessment</p>
+            <div class="sidebar-progress"><span id="sidebarProgress"></span></div>
+            <div class="sidebar-count"><strong id="sidebarCount">1</strong><span>of 36</span></div>
+            <div class="level-progress" id="levelProgress"></div>
+          </aside>
+          <div class="quiz-main">
+            <div class="quiz-topline">
+              <span id="questionCounter">Question 1 of 36</span>
+              <span class="category-pill" id="categoryPill">Grammar</span>
+            </div>
+            <div class="progress-track" aria-label="Quiz progress">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <article class="question-card">
+              <p class="question-level" id="questionLevel">A1 · Beginner</p>
+              <h2 id="questionText"></h2>
+              <div class="passage" id="passage"></div>
+              <div class="answers" id="answers" role="radiogroup" aria-label="Answer choices"></div>
+            </article>
+            <div class="quiz-footer">
+              <button class="secondary-button" id="previousButton">← Previous</button>
+              <span class="autosave">✓ Saved</span>
+              <button class="primary-button compact" id="nextButton">Next →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view results-view" id="resultsView" aria-labelledby="resultsTitle">
+        <div class="results-container" id="resultsContainer"></div>
+      </section>
+
+      <section class="view review-view" id="reviewView" aria-labelledby="reviewTitle">
+        <div class="review-container">
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Learn from your assessment</p>
+              <h1 id="reviewTitle">Review Your Answers</h1>
+            </div>
+            <button class="secondary-button" id="backResultsButton">← Results</button>
+          </div>
+          <div class="review-tools">
+            <div class="filter-buttons" aria-label="Filter answers">
+              <button class="filter-button active" data-filter="all">All</button>
+              <button class="filter-button" data-filter="incorrect">Incorrect only</button>
+              <button class="filter-button" data-filter="correct">Correct only</button>
+            </div>
+            <button class="text-button" id="restartButton">Start over</button>
+          </div>
+          <div class="review-list" id="reviewList"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="submitModal" role="dialog" aria-modal="true" aria-labelledby="submitTitle" hidden>
+      <div class="modal">
+        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        <div class="modal-icon">✓</div>
+        <h2 id="submitTitle">Ready to see your result?</h2>
+        <p id="submitMessage">You can still go back and change answers.</p>
+        <div class="modal-actions">
+          <button class="secondary-button" id="continueButton">Keep reviewing</button>
+          <button class="primary-button compact" id="submitButton">See my level →</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
